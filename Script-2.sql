@@ -261,28 +261,35 @@ with FullTable as (
 	join Managers m
 	on m.ClubID = c.ClubID)
 select League, PlayersAmount, Position from (
-select f.LeagueName as League , count(f.PlayerID) as PlayersAmount, f.Pos as Position
-from FullTable f
-where f.age > 26
-and f.Pos = 'Defender'
-group by League
-order by PlayersAmount) as Defenders_over_26
+	select f.LeagueName as League , count(f.PlayerID) as PlayersAmount, f.Pos as Position
+	from FullTable f
+	where f.age > 26
+	and f.Pos = 'Defender'
+	group by League
+	order by PlayersAmount)
+as Defenders_over_26
+	
 union all
+	
 select League, PlayersAmount, Position from (
-select f.LeagueName as League , count(f.PlayerID) as PlayersAmount, f.Pos as Position
-from FullTable f
-where f.age > 26
-and f.Pos = 'Midfielder'
-group by League
-order by PlayersAmount) as Midfielders_over_26
+	select f.LeagueName as League , count(f.PlayerID) as PlayersAmount, f.Pos as Position
+	from FullTable f
+	where f.age > 26
+	and f.Pos = 'Midfielder'
+	group by League
+	order by PlayersAmount)
+as Midfielders_over_26
+	
 union all
+	
 select League, PlayersAmount, Position from (
-select f.LeagueName as League , count(f.PlayerID) as PlayersAmount, f.Pos as Position
-from FullTable f
-where f.age > 26
-and f.Pos = 'Forward'
-group by League
-order by PlayersAmount) as Forwards_over_26;
+	select f.LeagueName as League , count(f.PlayerID) as PlayersAmount, f.Pos as Position
+	from FullTable f
+	where f.age > 26
+	and f.Pos = 'Forward'
+	group by League
+	order by PlayersAmount)
+as Forwards_over_26;
 
 
 
