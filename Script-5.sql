@@ -37,8 +37,7 @@ create table Clubs(
 
 
 select * from Leagues;
-
-explain analyze select Country, avg(AGE) as avg_age from (
+select Country, avg(AGE) as avg_age from (
 	select l.Country, count(c.ClubName) as clubtimes, p.Age
 	from Leagues l
 	join Clubs c
